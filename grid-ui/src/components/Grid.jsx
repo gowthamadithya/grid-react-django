@@ -6,7 +6,7 @@ const GridUi = () => {
     const [start, setStart] = useState(null)
     const [end, setEnd] = useState(null)
     const [path, setPath] = useState([])
-    const SERVER_URL = 'http://localhost:8080/'
+    const SERVER_URL = 'http://localhost:8000/'
 
     useEffect(()=> {
         const newGrid = Array(size).fill(null).map(()=> Array(size).fill(0))
@@ -14,9 +14,10 @@ const GridUi = () => {
     },[size])
 
     const populatePath = ()=> {
-        axios.get(`${SERVER_URL}api/find-path?n=${size}&start=${start[0],start[1]}&end=${end[0],end[1]}`)
+        axios.get(`${SERVER_URL}api/find-path?n=${size}&start=${start[0]},${start[1]}&end=${end[0]},${end[1]}`
+)
         .then((res) => {
-            setPath(res)
+            setPath(res.data)
         })
         .catch((err) => console.log(err))
 
