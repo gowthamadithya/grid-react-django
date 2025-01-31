@@ -12,7 +12,7 @@ def find_path(req):
     end = [int(x) for x in end.split(',')]
 
     item = get_path(n, start, end)
-    if req.type == 'GET':
+    if req.method == 'GET':
         return JsonResponse({'data': item})
     
 
